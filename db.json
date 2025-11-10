@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "name": "abc",
+      "contact_number": 31701228852,
+      "email": "abc@gmail.com",
+      "city": "karachi",
+      "id": "9"
+    },
+    {
+      "id": "be67",
+      "name": "maham",
+      "contact_number": 123647899112,
+      "email": "maham@gmail.com",
+      "city": "karachi"
+    }
+  ],
+  "products": [
+    {
+      "product_name": "face cleaner",
+      "price": 888,
+      "category": "Footwear",
+      "brand": "Nike",
+      "id": "1"
+    },
+    {
+      "product_name": "book",
+      "price": 777,
+      "category": "Clothing",
+      "brand": "Samsung",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "product_name": "samsung s25 ultra",
+      "price": 7777,
+      "category": "Beauty & Personal Care",
+      "brand": "Apple"
+    }
+  ]
+}
