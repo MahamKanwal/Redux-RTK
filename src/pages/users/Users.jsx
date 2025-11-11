@@ -1,15 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import UserTable from "./UserTable";
 import { useEffect } from "react";
 import { fetchUsers } from "../../features/user/userSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
+import { useStore } from "../../hooks/useStore";
+
 
 const Users = () => {
-  const { loading, users, error } = useSelector((state) => state.user);
-  const dispatch = useDispatch();
-  console.log(users);
+  const [userState, dispatch] =   useStore("user");
+  const { loading, users, error } = userState;
 
   useEffect(() => {
     dispatch(fetchUsers());
@@ -31,7 +31,7 @@ const Users = () => {
       >
         Add Users
       </NavLink>
-      <UserTable />
+      <UserTable users={users}/>
       <Outlet />
     </div>
   );

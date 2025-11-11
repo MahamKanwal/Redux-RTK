@@ -7,14 +7,18 @@ import FormGenerator from "../../components/FormElements/FormGenerator";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../Api";
+import { useStore } from "../../hooks/useStore";
+import { addUsers } from "../../features/user/userSlice";
 
 const UserForm = () => {
+  const dispatch = useStore();
   const { addAndUpdateUser } = useUsers();
   const [user, setUser] = useState();
   const { id } = useParams();
 
   const handleSubmit = (user) => {
     addAndUpdateUser(user, id);
+    dispatch(addUsers({...user,id: Date.now()}));
   };
 
   const userFormFields = [

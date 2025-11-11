@@ -1,8 +1,8 @@
 import { useUsers } from "../../contexts/UserContext";
 import DynamicTable from "../../components/DynamicTable";
 
-const UserTable = () => {
-  const { users, handleDeleteUser } = useUsers();
+const UserTable = ({users}) => {
+  const { handleDeleteUser } = useUsers();
   const userTableColumns = ["name", "email", "contact_number", "city"];
 
   const handleDelete = (id) => {
