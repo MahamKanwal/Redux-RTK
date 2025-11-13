@@ -1,24 +1,27 @@
 import { IoMdCall } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
 import { FaCity, FaUser } from "react-icons/fa";
-import { useUsers } from "../../contexts/UserContext";
 import Drawer from "../../components/Drawer";
 import FormGenerator from "../../components/FormElements/FormGenerator";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../Api";
-import { useStore } from "../../hooks/useStore";
-import { addUsers } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
+import { userActions } from "../../features/user/userSlice";
 
 const UserForm = () => {
-  const dispatch = useStore();
-  const { addAndUpdateUser } = useUsers();
+  const dispatch = useDispatch();
+  // const { addAndUpdateUser } = useUsers();
   const [user, setUser] = useState();
   const { id } = useParams();
-
   const handleSubmit = (user) => {
-    addAndUpdateUser(user, id);
-    dispatch(addUsers({...user,id: Date.now()}));
+    // addAndUpdateUser(user, id);
+    if (id) {
+      dispatch(userActions.updateItem({item: user,id}));
+    } else {
+
+      dispatch(userActions.addItem({...user,id: String(Date.now())}));
+    }
   };
 
   const userFormFields = [

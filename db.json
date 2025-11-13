@@ -1,61 +1,26 @@
 {
   "users": [
     {
-      "name": "abc",
-      "contact_number": 31701228852,
-      "email": "abc@gmail.com",
-      "city": "karachi",
-      "id": "9"
-    },
-    {
-      "id": "be67",
-      "name": "maham",
-      "contact_number": 123647899112,
-      "email": "maham@gmail.com",
-      "city": "karachi"
-    },
-    {
-      "id": "a414",
-      "name": "akkk",
-      "contact_number": 123990556666,
-      "email": "a@gmail.com",
-      "city": "karachi"
-    },
-    {
-      "id": "b1a9",
-      "name": "akkk",
-      "contact_number": 123990556666,
-      "email": "a@gmail.com",
-      "city": "karachi"
-    },
-    {
-      "id": 1762855219158,
-      "name": "akkk",
-      "contact_number": 123990556666,
-      "email": "a@gmail.com",
-      "city": "karachi"
+      "name": "ali",
+      "contact_number": 9876543212,
+      "email": "ali@gmail.com",
+      "city": "hyderabad",
+      "id": "1762976113842"
     }
   ],
   "products": [
-    {
-      "product_name": "face cleaner",
-      "price": 888,
-      "category": "Footwear",
-      "brand": "Nike",
-      "id": "1"
-    },
-    {
-      "product_name": "book",
-      "price": 777,
-      "category": "Clothing",
-      "brand": "Samsung",
-      "id": "2"
-    },
     {
       "id": "3",
       "product_name": "samsung s25 ultra",
       "price": 7777,
       "category": "Beauty & Personal Care",
+      "brand": "Apple"
+    },
+    {
+      "id": "1763012800061",
+      "product_name": "computer",
+      "price": 4000,
+      "category": "Electronics",
       "brand": "Apple"
     }
   ]

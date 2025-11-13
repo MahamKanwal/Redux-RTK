@@ -1,18 +1,18 @@
 import { NavLink, Outlet } from "react-router-dom";
 import UserTable from "./UserTable";
 import { useEffect } from "react";
-import { fetchUsers } from "../../features/user/userSlice";
+import { userActions } from "../../features/user/userSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 import { useStore } from "../../hooks/useStore";
 
 
 const Users = () => {
-  const [userState, dispatch] =   useStore("user");
-  const { loading, users, error } = userState;
-
+  const {user,dispatch} =   useStore("user");
+  const { loading, users, error } = user;
+console.log(user);
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(userActions.fetchItems());
   }, []);
 
   if (loading) {
@@ -20,7 +20,7 @@ const Users = () => {
   }
 
   if (error) {
-    return <Error message={error} onRetry={() => dispatch(fetchUsers())} />;
+    return <Error message={error} onRetry={() => dispatch(userActions.fetchItems())} />;
   }
 
   return (

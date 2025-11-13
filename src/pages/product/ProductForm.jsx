@@ -6,14 +6,23 @@ import Drawer from "../../components/Drawer";
 import FormGenerator from "../../components/FormElements/FormGenerator";
 import api from "../../Api";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addProducts, updateProducts } from "../../features/product/productSlice";
 
 const ProductForm = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
-  const { addAndUpdateProduct } = useProducts();
+  const dispatch = useDispatch();
+  // const { addAndUpdateProduct } = useProducts();
 
-  const handleSubmit = (newProduct) => {
-    addAndUpdateProduct(newProduct, id);
+  const handleSubmit = (product) => {
+    // addAndUpdateProduct(newProduct, id);
+    if (id){
+      dispatch(updateProducts(product,id))
+    }
+    else{
+      dispatch(addProducts({...product,id: String(Date.now())}));
+    }
   };
 
   const productFormFields = [
