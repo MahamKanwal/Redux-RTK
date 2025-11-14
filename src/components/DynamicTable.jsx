@@ -11,6 +11,7 @@ const DynamicTable = ({ columns, data, onEditLink, onDelete }) => {
         <table className="w-full">
           <thead className="bg-gradient-to-r from-gray-50 to-gray-100">
             <tr>
+              <th className="px-8 py-4 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider border-b border-gray-200">S.No</th>
               {columns.map((col) => (
                 <th
                   key={col}
@@ -38,15 +39,21 @@ const DynamicTable = ({ columns, data, onEditLink, onDelete }) => {
                 key={idx}
                 className="transition-all duration-200 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 group"
               >
-                {columns.map((col, colIndex) => (
+ <td className="px-8 py-6 text-sm text-gray-700 group-hover:text-gray-900 transition-colors duration-200"
+                  >
+                    <div className="flex items-center">
+                      <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                      <span className="font-medium">
+                        {idx+1}</span>
+                    </div>
+                  </td>
+                {columns.map((col) => (
                   <td
                     key={col}
                     className="px-8 py-6 text-sm text-gray-700 group-hover:text-gray-900 transition-colors duration-200"
                   >
                     <div className="flex items-center">
-                      {colIndex === 0 && (
-                        <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
-                      )}
+
                       <span className="font-medium">{item[col] || "N/A"}</span>
                     </div>
                   </td>

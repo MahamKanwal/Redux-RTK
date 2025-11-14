@@ -10,17 +10,10 @@
   ],
   "products": [
     {
-      "id": "3",
-      "product_name": "samsung s25 ultra",
-      "price": 7777,
+      "id": "1763112519791",
+      "product_name": "book",
+      "price": 4444,
       "category": "Beauty & Personal Care",
-      "brand": "Apple"
-    },
-    {
-      "id": "1763012800061",
-      "product_name": "computer",
-      "price": 4000,
-      "category": "Electronics",
       "brand": "Apple"
     }
   ]

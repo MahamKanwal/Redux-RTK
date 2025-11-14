@@ -7,7 +7,7 @@ import FormGenerator from "../../components/FormElements/FormGenerator";
 import api from "../../Api";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addProducts, updateProducts } from "../../features/product/productSlice";
+import { productActions,} from "../../features/product/productSlice";
 
 const ProductForm = () => {
   const { id } = useParams();
@@ -18,10 +18,10 @@ const ProductForm = () => {
   const handleSubmit = (product) => {
     // addAndUpdateProduct(newProduct, id);
     if (id){
-      dispatch(updateProducts(product,id))
+      dispatch(productActions.updateItem({item: product,id}))
     }
     else{
-      dispatch(addProducts({...product,id: String(Date.now())}));
+      dispatch(productActions.addItem({...product,id: String(Date.now())}));
     }
   };
 

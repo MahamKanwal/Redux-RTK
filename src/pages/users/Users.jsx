@@ -10,7 +10,7 @@ import { useStore } from "../../hooks/useStore";
 const Users = () => {
   const {user,dispatch} =   useStore("user");
   const { loading, users, error } = user;
-console.log(user);
+
   useEffect(() => {
     dispatch(userActions.fetchItems());
   }, []);

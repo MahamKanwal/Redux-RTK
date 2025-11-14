@@ -1,11 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-/**
- * Generic CRUD slice creator
- * @param {string} name - slice name
- * @param {string} url - API base URL
- */
 export const createCrudSlice = (name, url) => {
   // Async thunks
   const fetchItems = createAsyncThunk(`${name}/fetch`, async () => {
@@ -27,7 +22,7 @@ export const createCrudSlice = (name, url) => {
     await axios.delete(`${url}/${id}`);
     return id;
   });
-const  arrName =`${name}s`
+const  arrName =`${name}s`;
   const slice = createSlice({
     name,
     initialState: {
@@ -87,3 +82,5 @@ const  arrName =`${name}s`
     actions: { fetchItems, addItem, updateItem, deleteItem },
   };
 };
+
+
