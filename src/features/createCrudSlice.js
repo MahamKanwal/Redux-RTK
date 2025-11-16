@@ -13,16 +13,19 @@ export const createCrudSlice = (name, url) => {
     return data;
   });
 
-  const updateItem = createAsyncThunk(`${name}/update`, async ({ id, item }) => {
-    const { data } = await axios.put(`${url}/${id}`, item);
-    return data;
-  });
+  const updateItem = createAsyncThunk(
+    `${name}/update`,
+    async ({ id, item }) => {
+      const { data } = await axios.put(`${url}/${id}`, item);
+      return data;
+    }
+  );
 
   const deleteItem = createAsyncThunk(`${name}/delete`, async (id) => {
     await axios.delete(`${url}/${id}`);
     return id;
   });
-const  arrName =`${name}s`;
+  const arrName = `${name}s`;
   const slice = createSlice({
     name,
     initialState: {
@@ -49,11 +52,15 @@ const  arrName =`${name}s`;
         })
         // Delete
         .addCase(deleteItem.fulfilled, (state, action) => {
-          state[arrName] = state[arrName].filter((i) => i.id !== action.payload);
+          state[arrName] = state[arrName].filter(
+            (i) => i.id !== action.payload
+          );
         })
         // Global pending
         .addMatcher(
-          (action) => action.type.startsWith(`${name}/`) && action.type.endsWith("/pending"),
+          (action) =>
+            action.type.startsWith(`${name}/`) &&
+            action.type.endsWith("/pending"),
           (state) => {
             state.loading = true;
             state.error = null;
@@ -61,14 +68,18 @@ const  arrName =`${name}s`;
         )
         // Global fulfilled
         .addMatcher(
-          (action) => action.type.startsWith(`${name}/`) && action.type.endsWith("/fulfilled"),
+          (action) =>
+            action.type.startsWith(`${name}/`) &&
+            action.type.endsWith("/fulfilled"),
           (state) => {
             state.loading = false;
           }
         )
         // Global rejected
         .addMatcher(
-          (action) => action.type.startsWith(`${name}/`) && action.type.endsWith("/rejected"),
+          (action) =>
+            action.type.startsWith(`${name}/`) &&
+            action.type.endsWith("/rejected"),
           (state, action) => {
             state.loading = false;
             state.error = action.error.message;
@@ -82,5 +93,3 @@ const  arrName =`${name}s`;
     actions: { fetchItems, addItem, updateItem, deleteItem },
   };
 };
-
-
