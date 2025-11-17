@@ -8,8 +8,8 @@ import { useStore } from "../../hooks/useStore";
 
 
 const Users = () => {
-  const {user,dispatch} =   useStore("user");
-  const { loading, users, error } = user;
+  const {users, dispatch} =   useStore("users");
+  const { loading, items, error } = users;
 
   useEffect(() => {
     dispatch(userActions.fetchItems());
@@ -31,7 +31,7 @@ const Users = () => {
       >
         Add Users
       </NavLink>
-      <UserTable users={users}/>
+      <UserTable users={items}/>
       <Outlet />
     </div>
   );

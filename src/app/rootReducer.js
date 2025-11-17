@@ -5,8 +5,8 @@ import { productReducer } from "../features/product/productSlice";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
-  user: userReducer,
-  product: productReducer,
+  users: userReducer,
+  products: productReducer,
 });
 
 export default rootReducer;

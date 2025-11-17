@@ -1,21 +1,20 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
 
 export const useStore = (slice) => {
   const dispatch = useDispatch();
 
-  if (!slice) return;
+if (!slice) return;
 
-  if (Array.isArray(slice)) {
-    const state = {};
-    slice.forEach((s) => {
-      state[s] = useSelector((state) => state[s]);
-    });
-    state.dispatch = dispatch;
-    return state;
-  }
+if(Array.isArray(slice)){
+  const state = {};
+  slice.forEach(s => {
+    state[s] = useSelector((state) => state[s]);
+  });
+  state.dispatch = dispatch;
+  return state;
+}
 
-  const state = useSelector((state) => state[slice]);
-  return {[slice]:state, dispatch};
-};
-
+const state = useSelector((state) => state[slice]);
+return{[slice]:state, dispatch}
+}
 

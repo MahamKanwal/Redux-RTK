@@ -86,4 +86,4 @@
 import { createCrudSlice } from "../createCrudSlice";
 import { apiUrl } from "../../Api";
 
- export const {reducer: productReducer, actions: productActions} = createCrudSlice("product", `${apiUrl}/products`);
+ export const {reducer: productReducer, actions: productActions} = createCrudSlice("products", `${apiUrl}/products`);

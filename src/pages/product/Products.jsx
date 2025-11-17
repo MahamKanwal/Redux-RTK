@@ -7,8 +7,8 @@ import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 
 const Products = () => {
-  const {product,dispatch} =   useStore("product");
-  const { loading, products, error } = product;
+  const {products,dispatch} =   useStore("products");
+  const { loading, items, error } = products;
   useEffect(() => {
     dispatch(productActions.fetchItems());
   }, []);
@@ -30,7 +30,7 @@ const Products = () => {
       >
         Add Products
       </NavLink>
-      <ProductTable products={products}/>
+      <ProductTable products={items}/>
       <Outlet />
     </div>
   );
