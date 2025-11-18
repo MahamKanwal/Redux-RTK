@@ -1,11 +1,11 @@
 {
   "users": [
     {
-      "id": "1763404342490",
       "name": "ali",
       "contact_number": 3003878965,
       "email": "ali@gmail.com",
-      "city": "karachi"
+      "city": "islamabad",
+      "id": "1763404342490"
     }
   ],
   "products": [
@@ -22,6 +22,14 @@
       "price": 40000,
       "category": "Electronics",
       "brand": "Samsung"
+    },
+    {
+      "id": "1763442877067",
+      "product_name": "face cleaner",
+      "price": 5000,
+      "category": "Beauty & Personal Care",
+      "brand": "Samsung",
+      "productImage": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763442853/8733dc4ba315782c0bc6f04be50b604e.png"
     }
   ]
 }

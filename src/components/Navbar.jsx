@@ -1,9 +1,13 @@
 import { FaMoon, FaSun } from "react-icons/fa";
-import { useTheme } from "../contexts/ThemeContext";
 import { NavLink } from "react-router-dom";
+import { useStore } from "../hooks/useStore";
+import { toggleTheme } from "../features/theme/themeSlice";
 
 const Navbar = () => {
-  const { darkMode, toggleTheme } = useTheme();
+  
+  const {darkMode, dispatch} = useStore("darkMode")
+  
+  
   return (
     <div className="flex justify-between dark:text-white items-center px-6 py-3 bg-white dark:bg-black shadow-md transition-all duration-300">
       <h1 className="text-2xl font-bold tracking-wide">My Premium App</h1>
@@ -20,7 +24,7 @@ const Navbar = () => {
         </li>
       </ul>
       <button
-        onClick={toggleTheme}
+        onClick={()=>dispatch(toggleTheme())}
         className="p-2 rounded-full bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 transition-colors duration-200"
         aria-label="Toggle theme"
       >

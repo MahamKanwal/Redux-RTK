@@ -1,10 +1,8 @@
-import { useProducts } from "../../contexts/ProductContext";
 import { useEffect, useState } from "react";
 import { FaDollarSign, FaListCheck, FaLayerGroup } from "react-icons/fa6";
 import { FaShoppingBag } from "react-icons/fa";
 import Drawer from "../../components/Drawer";
 import FormGenerator from "../../components/FormElements/FormGenerator";
-import api from "../../Api";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { productActions,} from "../../features/product/productSlice";
@@ -13,10 +11,8 @@ const ProductForm = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const dispatch = useDispatch();
-  // const { addAndUpdateProduct } = useProducts();
 
   const handleSubmit = (product) => {
-    // addAndUpdateProduct(newProduct, id);
     if (id){
       dispatch(productActions.updateItem({item: product,id}))
     }
@@ -58,6 +54,7 @@ const ProductForm = () => {
       required: true,
       options: ["Nike", "Adidas", "Samsung", "Apple", "Sony"],
     },
+        { name: "productImage", type: "image", required: true},
   ];
 
   const getProduct = async () => {

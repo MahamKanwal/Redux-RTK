@@ -1,6 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
 import UserTable from "./UserTable";
-import { useEffect } from "react";
 import { userActions } from "../../features/user/userSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
@@ -10,10 +9,6 @@ import { useStore } from "../../hooks/useStore";
 const Users = () => {
   const {users, dispatch} =   useStore("users");
   const { loading, items, error } = users;
-
-  useEffect(() => {
-    dispatch(userActions.fetchItems());
-  }, []);
 
   if (loading) {
     return <Loader />;
@@ -38,3 +33,4 @@ const Users = () => {
 };
 
 export default Users;
+

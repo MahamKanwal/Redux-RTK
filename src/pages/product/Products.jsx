@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import ProductTable from "./ProductTable";
 import { useStore } from "../../hooks/useStore";
-import { useEffect } from "react";
 import {  productActions } from "../../features/product/productSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
@@ -9,9 +8,7 @@ import Error from "../../components/Error";
 const Products = () => {
   const {products,dispatch} =   useStore("products");
   const { loading, items, error } = products;
-  useEffect(() => {
-    dispatch(productActions.fetchItems());
-  }, []);
+ 
 
   if (loading) {
     return <Loader />;
