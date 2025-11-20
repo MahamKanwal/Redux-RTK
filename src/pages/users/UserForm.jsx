@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../features/user/userSlice";
+import axios from "axios";
+import { apiUrl } from "../../Api";
 
 const UserForm = () => {
   const dispatch = useDispatch();
@@ -56,12 +58,16 @@ const UserForm = () => {
         "hyderabad",
       ],
     },
+    { name: "user_image",
+           type: "image", 
+           required: true
+          },
   ];
 
   const getUser = async () => {
     if (id) {
-      const user = await api.userApi.getUserById(id);
-      setUser(user);
+     const { data } = await axios.get(`${apiUrl}/users/${id}`);
+      setUser(data);
     }
   };
 

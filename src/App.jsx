@@ -7,11 +7,13 @@ import Navbar from "./components/Navbar";
 import { productActions } from "./features/product/productSlice";
 import { userActions } from "./features/user/userSlice";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { Bounce, ToastContainer } from "react-toastify";
+import { useStore } from "./hooks/useStore";
+
 
 const App = () => {
+  const {darkMode, dispatch} = useStore("darkMode");
 
-  const dispatch = useDispatch();
    useEffect(() => {
     dispatch(productActions.fetchItems());
      dispatch(userActions.fetchItems());
@@ -31,6 +33,19 @@ const App = () => {
             <Route path="edit/:id" element={<ProductForm />} />
           </Route>
         </Routes>
+         <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={darkMode ? "light" : "dark"}
+        transition={Bounce}
+      />
       </Router>
     </div>
   );

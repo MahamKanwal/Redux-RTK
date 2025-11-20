@@ -4,7 +4,7 @@ import { userActions } from "../../features/user/userSlice";
 
 const UserTable = ({users}) => {
   const dispatch = useDispatch();
-  const userTableColumns = ["name", "email", "contact_number", "city"];
+  const userTableColumns = ["user_image","name", "email", "contact_number", "city"];
 
   const handleDelete = (id) => {
     dispatch(userActions.deleteItem(id));
@@ -23,3 +23,4 @@ const UserTable = ({users}) => {
 };
 
 export default UserTable;
+

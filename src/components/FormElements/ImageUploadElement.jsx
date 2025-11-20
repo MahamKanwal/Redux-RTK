@@ -1,37 +1,49 @@
-import { useState } from "react";
-import { uploadToCloudinary } from "../../utils/helperFunctions";
+import { useEffect, useState } from "react";
+import { snakeCaseToTitle, uploadToCloudinary } from "../../utils/helperFunctions";
 
-
-const ImageUploadElement = ({ name, value, handleChange, error }) => {
-  const [preview, setPreview] = useState(value || "");
+const ImageUploadElement = ({ name, value, label, handleChange, error }) => {
+  const [preview, setPreview] = useState(value || ""); // preview URL
   const [loading, setLoading] = useState(false);
 
   const handleImageChange = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+ 
+    const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(file.type)) {
+      alert("Only JPG, JPEG, PNG, and WEBP images are allowed.");
+      return;
+    }
 
-    // Preview before upload
-    setPreview(URL.createObjectURL(file));
     setLoading(true);
 
     try {
-      const imageUrl = await uploadToCloudinary(file);
+      const uploadedUrl = await uploadToCloudinary(file);
+      setPreview(uploadedUrl);
 
       handleChange({
-        target: { name, value: imageUrl }, // Cloudinary URL to Formik
+        target: { name, value: uploadedUrl },
       });
 
       setLoading(false);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
+      toast.error("Image uploading error");
       setLoading(false);
     }
   };
 
+  const fieldName = label || snakeCaseToTitle(name);
+
+useEffect(()=>{
+if (value){
+  setPreview(value)
+}
+},[value]);
+
   return (
     <div className="space-y-1">
-      <label className="font-medium">{name}</label>
-
+      <label className="font-medium">{fieldName}</label>
       <input
         type="file"
         accept="image/*"
@@ -39,6 +51,7 @@ const ImageUploadElement = ({ name, value, handleChange, error }) => {
         className="block w-full border p-2 rounded-md"
       />
 
+      {/* Show preview whether editing or new upload */}
       {preview && (
         <img
           src={preview}
@@ -48,10 +61,10 @@ const ImageUploadElement = ({ name, value, handleChange, error }) => {
       )}
 
       {loading && <p className="text-blue-500 text-sm">Uploading...</p>}
-
       {error && <p className="text-red-500 text-sm">{error}</p>}
     </div>
   );
 };
 
 export default ImageUploadElement;
+

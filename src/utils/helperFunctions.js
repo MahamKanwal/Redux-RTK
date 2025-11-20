@@ -1,3 +1,7 @@
+ const CLOUD_NAME = "dvaczuwrm";
+  const UPLOAD_PRESET = "my_unsigned_preset";
+
+
 export const snakeCaseToTitle = (name) => {
   return name
     .split("_")
@@ -5,6 +9,7 @@ export const snakeCaseToTitle = (name) => {
     .join(" ");
 };
 
+import axios from "axios";
 import * as Yup from "yup";
 
 export const buildSchema = (fields) => {
@@ -36,22 +41,13 @@ export const buildSchema = (fields) => {
 
 
 export const uploadToCloudinary = async (file) => {
-  const CLOUD_NAME = "dvaczuwrm";
-  const UPLOAD_PRESET = "my_unsigned_preset";
 
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", UPLOAD_PRESET);
 
-  const res = await fetch(
-    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
-    {
-      method: "POST",
-      body: formData,
-    }
-  );
+  const { data } = await axios.post(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,formData)
 
-  const data = await res.json();
   return data.secure_url; // image URL
 };
 

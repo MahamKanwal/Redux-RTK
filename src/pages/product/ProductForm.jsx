@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { FaDollarSign, FaListCheck, FaLayerGroup } from "react-icons/fa6";
-import { FaShoppingBag } from "react-icons/fa";
 import Drawer from "../../components/Drawer";
 import FormGenerator from "../../components/FormElements/FormGenerator";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { productActions,} from "../../features/product/productSlice";
+import { FaShoppingBag } from "react-icons/fa";
+import { apiUrl } from "../../Api";
+import axios from "axios";
 
 const ProductForm = () => {
   const { id } = useParams();
@@ -54,13 +56,15 @@ const ProductForm = () => {
       required: true,
       options: ["Nike", "Adidas", "Samsung", "Apple", "Sony"],
     },
-        { name: "productImage", type: "image", required: true},
+        { name: "product_image",
+           type: "image", 
+           required: true},
   ];
 
   const getProduct = async () => {
     if (id) {
-      const product = await api.productApi.getProductById(id);
-      setProduct(product);
+      const { data }= await axios.get(`${apiUrl}/products/${id}`);
+      setProduct(data);
     }
   };
 

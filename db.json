@@ -2,34 +2,21 @@
   "users": [
     {
       "name": "ali",
-      "contact_number": 3003878965,
+      "contact_number": 3219345677,
       "email": "ali@gmail.com",
-      "city": "islamabad",
-      "id": "1763404342490"
+      "city": "karachi",
+      "user_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763532492/34b39c5557382758ebdc2309b7988474.png",
+      "id": "1763632824762"
     }
   ],
   "products": [
     {
-      "product_name": "book",
-      "price": 400,
-      "category": "Books and Stationery",
-      "brand": "Adidas",
-      "id": "1763112519791"
-    },
-    {
-      "id": "1763403699840",
+      "id": "1763632859294",
       "product_name": "samsung s25 ultra",
-      "price": 40000,
+      "price": 500000,
       "category": "Electronics",
-      "brand": "Samsung"
-    },
-    {
-      "id": "1763442877067",
-      "product_name": "face cleaner",
-      "price": 5000,
-      "category": "Beauty & Personal Care",
       "brand": "Samsung",
-      "productImage": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763442853/8733dc4ba315782c0bc6f04be50b604e.png"
+      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763532492/34b39c5557382758ebdc2309b7988474.png"
     }
   ]
 }

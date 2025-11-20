@@ -8,7 +8,7 @@ const ProductTable = ({products}) => {
   const handleDelete = (id) => {
     dispatch(productActions.deleteItem(id))
   };
-  const productTableColumns = ["product_name", "category", "brand", "price"];
+  const productTableColumns = ["product_image","product_name", "category", "brand", "price"];
   return (
     <>
       <DynamicTable
