@@ -5,9 +5,8 @@ import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 import { useStore } from "../../hooks/useStore";
 
-
 const Users = () => {
-  const {users, dispatch} =   useStore("users");
+  const { users } = useStore("users");
   const { loading, items, error } = users;
 
   if (loading) {
@@ -15,7 +14,7 @@ const Users = () => {
   }
 
   if (error) {
-    return <Error message={error} onRetry={() => dispatch(userActions.fetchItems())} />;
+    return <Error message={error} onRetry={userActions.fetchItems} />;
   }
 
   return (
@@ -26,11 +25,10 @@ const Users = () => {
       >
         Add Users
       </NavLink>
-      <UserTable users={items}/>
+      <UserTable users={items} />
       <Outlet />
     </div>
   );
 };
 
 export default Users;
-

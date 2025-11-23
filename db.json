@@ -5,18 +5,26 @@
       "contact_number": 3219345677,
       "email": "ali@gmail.com",
       "city": "karachi",
-      "user_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763532492/34b39c5557382758ebdc2309b7988474.png",
+      "user_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763918311/b0867f76bc29b0384e00f184e581c8ae.jpg",
       "id": "1763632824762"
     }
   ],
   "products": [
     {
-      "id": "1763632859294",
       "product_name": "samsung s25 ultra",
       "price": 500000,
       "category": "Electronics",
       "brand": "Samsung",
-      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763532492/34b39c5557382758ebdc2309b7988474.png"
+      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763914715/50f7f46ac6686d1336da9fdbd6be45c9.jpg",
+      "id": "1763632859294"
+    },
+    {
+      "product_name": "book",
+      "price": 6000,
+      "category": "Books and Stationery",
+      "brand": "Sony",
+      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763918261/9e1a38236923ce0fccebfff7e300f6ca.jpg",
+      "id": "1763916848689"
     }
   ]
 }

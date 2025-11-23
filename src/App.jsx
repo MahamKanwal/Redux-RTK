@@ -9,22 +9,23 @@ import { userActions } from "./features/user/userSlice";
 import { useEffect } from "react";
 import { Bounce, ToastContainer } from "react-toastify";
 import { useStore } from "./hooks/useStore";
-
+import ProductCards from "./pages/product/ProductCards";
 
 const App = () => {
-  const {darkMode, dispatch} = useStore("darkMode");
+  const { darkMode, dispatch } = useStore("darkMode");
 
-   useEffect(() => {
+  useEffect(() => {
     dispatch(productActions.fetchItems());
-     dispatch(userActions.fetchItems());
+    dispatch(userActions.fetchItems());
   }, []);
 
-    return (
+  return (
     <div className="min-h-screen bg-black/10 dark:bg-black/90 dark:text-white">
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Users />}>
+          <Route path="/productcards" element={<ProductCards />} />
+          <Route path="/users" element={<Users />}>
             <Route path="create" element={<UserForm />} />
             <Route path="edit/:id" element={<UserForm />} />
           </Route>
@@ -33,19 +34,19 @@ const App = () => {
             <Route path="edit/:id" element={<ProductForm />} />
           </Route>
         </Routes>
-         <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme={darkMode ? "light" : "dark"}
-        transition={Bounce}
-      />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme={darkMode ? "light" : "dark"}
+          transition={Bounce}
+        />
       </Router>
     </div>
   );

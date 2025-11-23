@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { snakeCaseToTitle, uploadToCloudinary } from "../../utils/helperFunctions";
+import { toast } from "react-toastify";
 
 const ImageUploadElement = ({ name, value, label, handleChange, error }) => {
   const [preview, setPreview] = useState(value || ""); // preview URL
@@ -11,15 +12,13 @@ const ImageUploadElement = ({ name, value, label, handleChange, error }) => {
  
     const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
-      alert("Only JPG, JPEG, PNG, and WEBP images are allowed.");
+      toast.error("Only JPG, JPEG, PNG, and WEBP images are allowed.");
       return;
     }
-
-    setLoading(true);
-
+    setPreview(URL.createObjectURL(file));
     try {
       const uploadedUrl = await uploadToCloudinary(file);
-      setPreview(uploadedUrl);
+      
 
       handleChange({
         target: { name, value: uploadedUrl },
