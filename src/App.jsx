@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { Bounce, ToastContainer } from "react-toastify";
 import { useStore } from "./hooks/useStore";
 import ProductCards from "./pages/product/ProductCards";
+import Carts from "./pages/users/Carts";
 
 const App = () => {
   const { darkMode, dispatch } = useStore("darkMode");
@@ -25,6 +26,7 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/productcards" element={<ProductCards />} />
+            <Route path="/carts" element={<Carts />} />
           <Route path="/users" element={<Users />}>
             <Route path="create" element={<UserForm />} />
             <Route path="edit/:id" element={<UserForm />} />
