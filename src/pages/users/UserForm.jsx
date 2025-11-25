@@ -16,10 +16,9 @@ const UserForm = () => {
   const { id } = useParams();
   const handleSubmit = (user) => {
     if (id) {
-      dispatch(userActions.updateItem({item: user,id}));
+      dispatch(userActions.updateItem({ item: user, id }));
     } else {
-
-      dispatch(userActions.addItem({...user,id: String(Date.now())}));
+      dispatch(userActions.addItem({ ...user, id: String(Date.now()) }));
     }
   };
 
@@ -58,15 +57,12 @@ const UserForm = () => {
         "hyderabad",
       ],
     },
-    { name: "user_image",
-           type: "image", 
-           required: true
-          },
+    { name: "user_image", type: "image", required: true },
   ];
 
   const getUser = async () => {
     if (id) {
-     const { data } = await axios.get(`${apiUrl}/users/${id}`);
+      const { data } = await axios.get(`${apiUrl}/users/${id}`);
       setUser(data);
     }
   };

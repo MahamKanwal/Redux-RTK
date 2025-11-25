@@ -21,12 +21,12 @@ const App = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black/10 dark:bg-black/90 dark:text-white">
+    <div className="min-h-screen bg-black/5 dark:bg-black/90 dark:text-white">
       <Router>
         <Navbar />
         <Routes>
           <Route path="/productcards" element={<ProductCards />} />
-            <Route path="/carts" element={<Carts />} />
+          <Route path="/cart" element={<Carts />} />
           <Route path="/users" element={<Users />}>
             <Route path="create" element={<UserForm />} />
             <Route path="edit/:id" element={<UserForm />} />
@@ -46,7 +46,7 @@ const App = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme={darkMode ? "light" : "dark"}
+          theme={darkMode ? "dark" : "light"}
           transition={Bounce}
         />
       </Router>

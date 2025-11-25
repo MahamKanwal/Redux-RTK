@@ -4,7 +4,7 @@ import Drawer from "../../components/Drawer";
 import FormGenerator from "../../components/FormElements/FormGenerator";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { productActions,} from "../../features/product/productSlice";
+import { productActions } from "../../features/product/productSlice";
 import { FaShoppingBag } from "react-icons/fa";
 import { apiUrl } from "../../Api";
 import axios from "axios";
@@ -15,11 +15,10 @@ const ProductForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (product) => {
-    if (id){
-      dispatch(productActions.updateItem({item: product,id}))
-    }
-    else{
-      dispatch(productActions.addItem({...product,id: String(Date.now())}));
+    if (id) {
+      dispatch(productActions.updateItem({ item: product, id }));
+    } else {
+      dispatch(productActions.addItem({ ...product, id: String(Date.now()) }));
     }
   };
 
@@ -56,14 +55,12 @@ const ProductForm = () => {
       required: true,
       options: ["Nike", "Adidas", "Samsung", "Apple", "Sony"],
     },
-        { name: "product_image",
-           type: "image", 
-           required: true},
+    { name: "product_image", type: "image", required: true },
   ];
 
   const getProduct = async () => {
     if (id) {
-      const { data }= await axios.get(`${apiUrl}/products/${id}`);
+      const { data } = await axios.get(`${apiUrl}/products/${id}`);
       setProduct(data);
     }
   };

@@ -2,13 +2,18 @@ import { useDispatch } from "react-redux";
 import DynamicTable from "../../components/DynamicTable";
 import { productActions } from "../../features/product/productSlice";
 
-
-const ProductTable = ({products}) => {
+const ProductTable = ({ products }) => {
   const dispatch = useDispatch();
   const handleDelete = (id) => {
-    dispatch(productActions.deleteItem(id))
+    dispatch(productActions.deleteItem(id));
   };
-  const productTableColumns = ["product_image","product_name", "category", "brand", "price"];
+  const productTableColumns = [
+    "product_image",
+    "product_name",
+    "category",
+    "brand",
+    "price",
+  ];
   return (
     <>
       <DynamicTable

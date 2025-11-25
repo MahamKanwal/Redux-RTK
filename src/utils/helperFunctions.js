@@ -1,6 +1,13 @@
- const CLOUD_NAME = "dvaczuwrm";
-  const UPLOAD_PRESET = "my_unsigned_preset";
+const CLOUD_NAME = "dvaczuwrm";
+const UPLOAD_PRESET = "my_unsigned_preset";
 
+export const formatPrice = (price) => {
+  return new Intl.NumberFormat("en-PK", {
+    style: "currency",
+    currency: "PKR",
+    maximumFractionDigits: 0,
+  }).format(price);
+};
 
 export const snakeCaseToTitle = (name) => {
   return name
@@ -39,16 +46,15 @@ export const buildSchema = (fields) => {
   return Yup.object().shape(shape);
 };
 
-
 export const uploadToCloudinary = async (file) => {
-
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", UPLOAD_PRESET);
 
-  const { data } = await axios.post(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,formData)
+  const { data } = await axios.post(
+    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,
+    formData
+  );
 
   return data.secure_url; // image URL
 };
-
-

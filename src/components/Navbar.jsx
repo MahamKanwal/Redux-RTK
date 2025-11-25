@@ -4,9 +4,9 @@ import { useStore } from "../hooks/useStore";
 import { toggleTheme } from "../features/theme/themeSlice";
 
 const Navbar = () => {
-  const { darkMode, dispatch , users} = useStore(["darkMode", "users"]);
-const {cartItems} = users;
-console.log(cartItems);
+  const { darkMode, dispatch, users } = useStore(["darkMode", "users"]);
+  const { cartItems } = users;
+  // console.log(cartItems);
   return (
     <div className="flex justify-between dark:text-white items-center px-6 py-3 bg-white dark:bg-black shadow-md transition-all duration-300">
       <h1 className="text-2xl font-bold tracking-wide">My Premium App</h1>
@@ -15,8 +15,8 @@ console.log(cartItems);
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
-           <li>
-          <NavLink to="/carts">Cart</NavLink>
+        <li>
+          <NavLink to="/cart">Cart</NavLink>
         </li>
         <li>
           <NavLink to="/productcards">Product Cards</NavLink>

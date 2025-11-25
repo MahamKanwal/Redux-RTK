@@ -1,23 +1,26 @@
 import { NavLink, Outlet } from "react-router-dom";
 import ProductTable from "./ProductTable";
 import { useStore } from "../../hooks/useStore";
-import {  productActions } from "../../features/product/productSlice";
+import { productActions } from "../../features/product/productSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 
 const Products = () => {
-  const {products,dispatch} =   useStore("products");
+  const { products, dispatch } = useStore("products");
   const { loading, items, error } = products;
- 
 
   if (loading) {
     return <Loader />;
   }
 
   if (error) {
-    return <Error message={error} onRetry={() => dispatch(productActions.fetchItems)} />;
+    return (
+      <Error
+        message={error}
+        onRetry={() => dispatch(productActions.fetchItems)}
+      />
+    );
   }
-  
 
   return (
     <div className="mt-4">
@@ -27,7 +30,7 @@ const Products = () => {
       >
         Add Products
       </NavLink>
-      <ProductTable products={items}/>
+      <ProductTable products={items} />
       <Outlet />
     </div>
   );

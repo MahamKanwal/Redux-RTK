@@ -53,8 +53,11 @@ const DynamicTable = ({ columns, data, onEditLink, onDelete }) => {
                     className="px-8 py-6 text-sm text-gray-700 group-hover:text-gray-900 transition-colors duration-200"
                   >
                     <div className="flex items-center">
-                      {(col.includes("image") && item[col])  ? (
-                        <img src={item[col]} className="rounded-md w-10 h-10 object-center object-cover" />
+                      {col.includes("image") && item[col] ? (
+                        <img
+                          src={item[col]}
+                          className="rounded-md w-10 h-10 object-center object-cover"
+                        />
                       ) : (
                         <span className="font-medium">
                           {item[col] || "N/A"}

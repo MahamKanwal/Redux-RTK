@@ -2,9 +2,15 @@ import DynamicTable from "../../components/DynamicTable";
 import { useDispatch } from "react-redux";
 import { userActions } from "../../features/user/userSlice";
 
-const UserTable = ({users}) => {
+const UserTable = ({ users }) => {
   const dispatch = useDispatch();
-  const userTableColumns = ["user_image","name", "email", "contact_number", "city"];
+  const userTableColumns = [
+    "user_image",
+    "name",
+    "email",
+    "contact_number",
+    "city",
+  ];
 
   const handleDelete = (id) => {
     dispatch(userActions.deleteItem(id));
@@ -23,4 +29,3 @@ const UserTable = ({users}) => {
 };
 
 export default UserTable;
-

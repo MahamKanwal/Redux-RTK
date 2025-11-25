@@ -8,11 +8,11 @@ import ProductCard from "./ProductCard";
 const ProductCards = () => {
   const { products } = useStore("products");
   const { items, error, loading } = products;
-  
+
   if (loading) {
     return <Loader />;
   }
-  
+
   if (error) {
     return <Error message={error} onRetry={productActions.fetchItems} />;
   }

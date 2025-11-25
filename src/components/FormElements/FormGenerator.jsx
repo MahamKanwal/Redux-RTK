@@ -60,14 +60,13 @@ const FormGenerator = ({ fields, onSubmit, defaultValues }) => {
           error,
         };
 
-      return field.type === "select" ? (
-  <SelectElement key={index} {...sharedProps} />
-) : field.type === "image" ? (
-  <ImageUploadElement key={index} {...sharedProps} />
-) : (
-  <InputElement key={index} {...sharedProps} />
-);
-
+        return field.type === "select" ? (
+          <SelectElement key={index} {...sharedProps} />
+        ) : field.type === "image" ? (
+          <ImageUploadElement key={index} {...sharedProps} />
+        ) : (
+          <InputElement key={index} {...sharedProps} />
+        );
       })}
 
       <div className="flex gap-2 justify-end border-t-2 border-gray-200 p-3">

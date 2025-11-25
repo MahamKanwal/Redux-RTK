@@ -88,6 +88,7 @@ import { apiUrl } from "../../Api";
 const sliceArgs = {
   name: "products",
   url: `${apiUrl}/products`,
-  crud : true,
-}
- export const {reducer: productReducer, actions: productActions} = createCrudSlice(sliceArgs);
+  crud: true,
+};
+export const { reducer: productReducer, actions: productActions } =
+  createCrudSlice(sliceArgs);

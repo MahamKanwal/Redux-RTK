@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { snakeCaseToTitle, uploadToCloudinary } from "../../utils/helperFunctions";
+import {
+  snakeCaseToTitle,
+  uploadToCloudinary,
+} from "../../utils/helperFunctions";
 import { toast } from "react-toastify";
 
 const ImageUploadElement = ({ name, value, label, handleChange, error }) => {
@@ -9,7 +12,7 @@ const ImageUploadElement = ({ name, value, label, handleChange, error }) => {
   const handleImageChange = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
- 
+
     const allowedTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
     if (!allowedTypes.includes(file.type)) {
       toast.error("Only JPG, JPEG, PNG, and WEBP images are allowed.");
@@ -18,7 +21,6 @@ const ImageUploadElement = ({ name, value, label, handleChange, error }) => {
     setPreview(URL.createObjectURL(file));
     try {
       const uploadedUrl = await uploadToCloudinary(file);
-      
 
       handleChange({
         target: { name, value: uploadedUrl },
@@ -34,11 +36,11 @@ const ImageUploadElement = ({ name, value, label, handleChange, error }) => {
 
   const fieldName = label || snakeCaseToTitle(name);
 
-useEffect(()=>{
-if (value){
-  setPreview(value)
-}
-},[value]);
+  useEffect(() => {
+    if (value) {
+      setPreview(value);
+    }
+  }, [value]);
 
   return (
     <div className="space-y-1">
@@ -66,4 +68,3 @@ if (value){
 };
 
 export default ImageUploadElement;
-
