@@ -14,39 +14,60 @@ export const createCrudSlice = ({
   crud = false,
   reducers = {},
 }) => {
-  const fetchItems = createAsyncThunk(`${name}/fetchItems`, async () => {
-    const { data } = await axios.get(url);
-    return data;
-  });
+  // -----------------------------
+  // CRUD Thunks (only if crud=true)
+  // -----------------------------
+  let fetchItems, addItem, deleteItem, updateItem;
 
-  const addItem = createAsyncThunk(`${name}/addItem`, async (item) => {
-    const { data } = await axios.post(url, item);
-    return data;
-  });
-
-  const deleteItem = createAsyncThunk(`${name}/deleteItem`, async (id) => {
-    await axios.delete(`${url}/${id}`);
-    return id;
-  });
-
-  const updateItem = createAsyncThunk(
-    `${name}/updateItem`,
-    async ({ id, item }) => {
-      const { data } = await axios.put(`${url}/${id}`, item);
+  if (crud) {
+    fetchItems = createAsyncThunk(`${name}/fetchItems`, async () => {
+      const { data } = await axios.get(url);
       return data;
-    }
-  );
+    });
 
+    addItem = createAsyncThunk(`${name}/addItem`, async (item) => {
+      const { data } = await axios.post(url, item);
+      return data;
+    });
+
+    deleteItem = createAsyncThunk(`${name}/deleteItem`, async (id) => {
+      await axios.delete(`${url}/${id}`);
+      return id;
+    });
+
+    updateItem = createAsyncThunk(
+      `${name}/updateItem`,
+      async ({ id, item }) => {
+        const { data } = await axios.put(`${url}/${id}`, item);
+        return data;
+      }
+    );
+  }
+
+  // -----------------------------
+  // CRUD Initial State if enabled
+  // -----------------------------
+  const crudState = crud
+    ? {
+        items: [],
+        loading: false,
+        error: null,
+      }
+    : {};
+
+  // -----------------------------
+  // Slice
+  // -----------------------------
   const slice = createSlice({
     name,
     initialState: {
-      items: [],
-      loading: false,
-      error: null,
+      ...crudState,
       ...initialState,
     },
     reducers,
     extraReducers: (builder) => {
+      if (!crud) return; // ❌ CRUD off → skip extra reducers
+
       builder
         .addCase(fetchItems.fulfilled, (state, action) => {
           state.items = action.payload;
@@ -61,7 +82,7 @@ export const createCrudSlice = ({
         })
         .addCase(updateItem.fulfilled, (state, action) => {
           state.items = state.items.map((item) =>
-            item.id == action.payload.id ? action.payload : item
+            item.id === action.payload.id ? action.payload : item
           );
         })
         .addMatcher(
@@ -87,13 +108,13 @@ export const createCrudSlice = ({
     },
   });
 
+  // Return Slice & CRUD actions (only if crud enabled)
   return {
     reducer: slice.reducer,
     actions: {
-      addItem,
-      fetchItems,
-      deleteItem,
-      updateItem,
+      ...(crud
+        ? { addItem, fetchItems, deleteItem, updateItem }
+        : {}),
       ...slice.actions,
     },
   };

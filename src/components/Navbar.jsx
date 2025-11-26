@@ -1,12 +1,13 @@
 import { FaMoon, FaSun } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useStore } from "../hooks/useStore";
-import { toggleTheme } from "../features/theme/themeSlice";
+import { themeActions } from "../features/theme/themeSlice";
+
 
 const Navbar = () => {
   const { darkMode, dispatch, users } = useStore(["darkMode", "users"]);
   const { cartItems } = users;
-  // console.log(cartItems);
+
   return (
     <div className="flex justify-between dark:text-white items-center px-6 py-3 bg-white dark:bg-black shadow-md transition-all duration-300">
       <h1 className="text-2xl font-bold tracking-wide">My Premium App</h1>
@@ -15,7 +16,8 @@ const Navbar = () => {
         <li>
           <NavLink to="/">Home</NavLink>
         </li>
-        <li>
+        <li className="relative">
+          <span className="absolute -top-4 -right-5 bg-yellow-300 w-5 h-5 rounded-md text-center leading-[20px] text-[10px]">{cartItems.length}</span>
           <NavLink to="/cart">Cart</NavLink>
         </li>
         <li>
@@ -29,7 +31,7 @@ const Navbar = () => {
         </li>
       </ul>
       <button
-        onClick={() => dispatch(toggleTheme())}
+        onClick={() => dispatch(themeActions.toggleTheme())}
         className="p-2 rounded-full bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 transition-colors duration-200"
         aria-label="Toggle theme"
       >

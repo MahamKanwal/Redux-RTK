@@ -4,8 +4,11 @@ import { userActions } from "../../features/user/userSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 import { useStore } from "../../hooks/useStore";
+import { useGetUserQuery } from "../../features/user/userApi";
 
 const Users = () => {
+  const a = useGetUserQuery();
+  console.log(a);
   const { users } = useStore("users");
   const { loading, items, error } = users;
 

@@ -6,14 +6,13 @@ import { formatPrice } from "../../utils/helperFunctions";
 const Carts = () => {
   const { users } = useStore("users");
   const { cartItems } = users;
-  const totalQty = cartItems.reduce((a, c) => a + c.quantity, 0);
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
 
   return (
     <div className="bg-white rounded-lg shadow-xl border border-gray-100 overflow-hidden mt-6 text-black">
       <div className="flex justify-around m-5">
         <h2 className="text-xl font-bold">Shopping Cart</h2>
-        <p className="text-xl font-bold">{totalQty} Items</p>
+        <p className="text-xl font-bold">{cartItems.length} Items</p>
       </div>
       <hr />
       <div className="mt-4">

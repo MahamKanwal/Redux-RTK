@@ -1,7 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-
-const themeSlice = createSlice({
-  name: "darkMode",
+import { createCrudSlice } from "../createCrudSlice";
+const sliceArgs = {
+  name: "darMode",
   initialState: localStorage.getItem("darkMode") == "true",
   reducers: {
     toggleTheme: (state) => {
@@ -11,6 +10,6 @@ const themeSlice = createSlice({
       return newMode;
     },
   },
-});
-export const { toggleTheme } = themeSlice.actions;
-export default themeSlice.reducer;
+};
+export const { reducer: themeReducer, actions: themeActions } = createCrudSlice(sliceArgs);
+
