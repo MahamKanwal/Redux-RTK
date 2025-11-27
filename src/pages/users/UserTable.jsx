@@ -1,9 +1,8 @@
 import DynamicTable from "../../components/DynamicTable";
-import { useDispatch } from "react-redux";
-import { userActions } from "../../features/user/userSlice";
+import { useDeleteUserMutation } from "../../features/user/userApi";
 
 const UserTable = ({ users }) => {
-  const dispatch = useDispatch();
+  const [deleteUser] = useDeleteUserMutation();
   const userTableColumns = [
     "user_image",
     "name",
@@ -13,7 +12,7 @@ const UserTable = ({ users }) => {
   ];
 
   const handleDelete = (id) => {
-    dispatch(userActions.deleteItem(id));
+  deleteUser(id);
   };
 
   return (
@@ -22,7 +21,7 @@ const UserTable = ({ users }) => {
         columns={userTableColumns}
         data={users}
         onDelete={handleDelete}
-        onEditLink={"/edit"}
+        onEditLink={"/users/edit"}
       />
     </div>
   );

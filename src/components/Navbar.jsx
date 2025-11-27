@@ -17,7 +17,8 @@ const Navbar = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li className="relative">
-          <span className="absolute -top-4 -right-5 bg-yellow-300 w-5 h-5 rounded-md text-center leading-[20px] text-[10px]">{cartItems.length}</span>
+          <span className="absolute -top-4 -right-5 bg-yellow-300 w-5 h-5 rounded-md text-center leading-[20px] text-[10px]">{cartItems.length}
+          </span>
           <NavLink to="/cart">Cart</NavLink>
         </li>
         <li>

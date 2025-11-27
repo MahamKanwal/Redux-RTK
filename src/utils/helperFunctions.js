@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const CLOUD_NAME = "dvaczuwrm";
 const UPLOAD_PRESET = "my_unsigned_preset";
 
@@ -16,36 +18,6 @@ export const snakeCaseToTitle = (name) => {
     .join(" ");
 };
 
-import axios from "axios";
-import * as Yup from "yup";
-
-export const buildSchema = (fields) => {
-  const shape = {};
-
-  fields.forEach((f) => {
-    let rule = Yup.string();
-
-    if (f.required) {
-      rule = rule.required(`${snakeCaseToTitle(f.name)} is required`);
-    }
-
-    // type-based validation
-    if (f.type === "email") {
-      rule = rule.email("Invalid email format");
-    }
-
-    if (f.type === "number") {
-      rule = Yup.string()
-        .matches(/^[0-9]+$/, "Only numbers allowed")
-        .required(`${snakeCaseToTitle(f.name)} is required`);
-    }
-
-    shape[f.name] = rule;
-  });
-
-  return Yup.object().shape(shape);
-};
-
 export const uploadToCloudinary = async (file) => {
   const formData = new FormData();
   formData.append("file", file);
@@ -58,3 +30,10 @@ export const uploadToCloudinary = async (file) => {
 
   return data.secure_url; // image URL
 };
+
+
+export const apiRequest = (url, method = "GET", body = undefined) => ({
+  url,
+  method,
+  body,
+});

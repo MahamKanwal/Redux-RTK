@@ -1,34 +1,29 @@
 import { NavLink, Outlet } from "react-router-dom";
 import UserTable from "./UserTable";
-import { userActions } from "../../features/user/userSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
-import { useStore } from "../../hooks/useStore";
-import { useGetUserQuery } from "../../features/user/userApi";
+import { useGetUsersQuery } from "../../features/user/userApi";
 
 const Users = () => {
-  const a = useGetUserQuery();
-  console.log(a);
-  const { users } = useStore("users");
-  const { loading, items, error } = users;
+  const {data, isLoading, isError , error , refetch} = useGetUsersQuery();
 
-  if (loading) {
+  if (isLoading) {
     return <Loader />;
   }
 
-  if (error) {
-    return <Error message={error} onRetry={userActions.fetchItems} />;
+  if (isError) {
+    return <Error message={error.error} onRetry={refetch} />;
   }
 
   return (
     <div className="mt-4">
       <NavLink
-        to="/create"
+        to="/users/create"
         className="px-4 py-2 bg-gray-100 text-black rounded-lg mr-auto font-medium"
       >
         Add Users
       </NavLink>
-      <UserTable users={items} />
+      <UserTable users={data} />
       <Outlet />
     </div>
   );

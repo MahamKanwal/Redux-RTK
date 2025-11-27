@@ -1,9 +1,25 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./rootReducer";
+// store.js
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import api from "../features/baseApi";
 
-export const store = configureStore({
-  reducer: {...rootReducer, [api.reducerPath]: api.reducer}, 
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware)
+// Slices
+import { userReducer } from "../features/user/userSlice";
+import { productReducer } from "../features/product/productSlice";
+import { themeReducer } from "../features/theme/themeSlice";
+
+// Root Reducer
+const rootReducer = combineReducers({
+  users: userReducer,
+  products: productReducer,
+  darkMode: themeReducer,
+  [api.reducerPath]: api.reducer,   // RTK Query Reducer
 });
+
+// Store
+export const store = configureStore({
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware), // RTK Query Middleware
+});
+
 
