@@ -26,7 +26,7 @@ const userApi = api.injectEndpoints({
     updateUser: builder.mutation({
       query: ({ id, ...data }) =>
         apiRequest(`/users/${id}`, "PUT", data),
-     invalidatesTags: (result, error, { id }) => [
+     invalidatesTags: (result, error, id ) => [
     { type: "Users", id },
   ],
     }),

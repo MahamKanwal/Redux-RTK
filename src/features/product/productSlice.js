@@ -92,3 +92,4 @@ const sliceArgs = {
 };
 export const { reducer: productReducer, actions: productActions } =
   createCrudSlice(sliceArgs);
+

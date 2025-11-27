@@ -4,21 +4,13 @@ import Products from "./pages/product/Products";
 import ProductForm from "./pages/product/ProductForm";
 import UserForm from "./pages/users/UserForm";
 import Navbar from "./components/Navbar";
-import { productActions } from "./features/product/productSlice";
-import { userActions } from "./features/user/userSlice";
-import { useEffect } from "react";
 import { Bounce, ToastContainer } from "react-toastify";
 import { useStore } from "./hooks/useStore";
 import ProductCards from "./pages/product/ProductCards";
 import Carts from "./pages/users/Carts";
 
 const App = () => {
-  const { darkMode, dispatch } = useStore("darkMode");
-
-  useEffect(() => {
-    dispatch(productActions.fetchItems());
-    dispatch(userActions.fetchItems());
-  }, []);
+  const { darkMode } = useStore("darkMode");
 
   return (
     <div className="min-h-screen bg-black/5 dark:bg-black/90 dark:text-white">

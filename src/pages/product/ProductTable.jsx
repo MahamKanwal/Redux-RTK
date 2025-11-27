@@ -1,12 +1,13 @@
-import { useDispatch } from "react-redux";
 import DynamicTable from "../../components/DynamicTable";
-import { productActions } from "../../features/product/productSlice";
+import { useDeleteProductMutation } from "../../features/product/productApi";
 
 const ProductTable = ({ products }) => {
-  const dispatch = useDispatch();
+  const [deleteProduct] = useDeleteProductMutation();
+
   const handleDelete = (id) => {
-    dispatch(productActions.deleteItem(id));
+    deleteProduct(id);
   };
+
   const productTableColumns = [
     "product_image",
     "product_name",

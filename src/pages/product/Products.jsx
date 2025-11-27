@@ -1,25 +1,18 @@
 import { NavLink, Outlet } from "react-router-dom";
 import ProductTable from "./ProductTable";
-import { useStore } from "../../hooks/useStore";
-import { productActions } from "../../features/product/productSlice";
 import Loader from "../../components/Loader";
 import Error from "../../components/Error";
+import { useGetProductsQuery } from "../../features/product/productApi";
 
 const Products = () => {
-  const { products, dispatch } = useStore("products");
-  const { loading, items, error } = products;
+  const { data, isLoading, isError, error, refetch } = useGetProductsQuery();
 
-  if (loading) {
+  if (isLoading) {
     return <Loader />;
   }
 
-  if (error) {
-    return (
-      <Error
-        message={error}
-        onRetry={() => dispatch(productActions.fetchItems)}
-      />
-    );
+  if (isError) {
+    return <Error message={error.error} onRetry={refetch} />;
   }
 
   return (
@@ -30,7 +23,7 @@ const Products = () => {
       >
         Add Products
       </NavLink>
-      <ProductTable products={items} />
+      <ProductTable products={data} />
       <Outlet />
     </div>
   );

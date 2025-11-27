@@ -1,26 +1,24 @@
 // In your parent component
 import Error from "../../components/Error";
 import Loader from "../../components/Loader";
-import { productActions } from "../../features/product/productSlice";
-import { useStore } from "../../hooks/useStore";
+import { useGetProductsQuery } from "../../features/product/productApi";
 import ProductCard from "./ProductCard";
 
 const ProductCards = () => {
-  const { products } = useStore("products");
-  const { items, error, loading } = products;
+  const { data , isLoading, isError, error, refetch} = useGetProductsQuery();
 
-  if (loading) {
+  if (isLoading) {
     return <Loader />;
   }
 
-  if (error) {
-    return <Error message={error} onRetry={productActions.fetchItems} />;
+  if (isError) {
+    return <Error message={error.error} onRetry={refetch} />;
   }
 
   return (
     <div className="container mx-auto p-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {items.map((product) => (
+        {data.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

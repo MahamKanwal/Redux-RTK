@@ -1,11 +1,11 @@
 // userSlice.js
 import { createCrudSlice } from "../createCrudSlice";
-import { apiUrl } from "../../Api";
+// import { apiUrl } from "../../Api";
 
 const sliceArgs = {
   name: "users",
-  url: `${apiUrl}/users`,
-  crud: true,
+  // url: `${apiUrl}/users`,
+  // crud: true,
   initialState: {
     cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
   },
