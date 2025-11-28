@@ -9,6 +9,7 @@ import {
   useUpdateUserMutation,
   useGetUserByIdQuery,
 } from "../../features/user/userApi";
+import { toast } from "react-toastify";
 
 const UserForm = () => {
   const { id } = useParams();
@@ -22,9 +23,11 @@ const UserForm = () => {
     if (id) {
       // UPDATE USER
       await updateUser({ id, ...user });
+      toast.success("User updated successfully!");
     } else {
       // CREATE USER
       await addUser(user);
+      toast.success("User created successfully!");
     }
   };
 
@@ -63,7 +66,7 @@ const UserForm = () => {
         "hyderabad",
       ],
     },
-    { name: "user_image", type: "image", required: true },
+    { name: "user_image", type: "image" },
   ];
 
   return (

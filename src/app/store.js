@@ -4,14 +4,12 @@ import api from "../features/baseApi";
 
 // Slices
 import { userReducer } from "../features/user/userSlice";
-import { productReducer } from "../features/product/productSlice";
 import { themeReducer } from "../features/theme/themeSlice";
 
 // Root Reducer
 const rootReducer = combineReducers({
   users: userReducer,
-  products: productReducer,
-  darkMode: themeReducer,
+ darkMode: themeReducer,
   [api.reducerPath]: api.reducer,   // RTK Query Reducer
 });
 

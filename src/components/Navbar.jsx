@@ -1,7 +1,7 @@
 import { FaMoon, FaSun } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useStore } from "../hooks/useStore";
-import { themeActions } from "../features/theme/themeSlice";
+import {themeActions} from "../features/theme/themeSlice";
 
 
 const Navbar = () => {

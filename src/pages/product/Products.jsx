@@ -16,14 +16,14 @@ const Products = () => {
   }
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 flex flex-col">
       <NavLink
         to="/products/create"
-        className="px-4 py-2 bg-gray-100 text-black rounded-lg mr-auto font-medium"
+        className="px-4 py-2 bg-gray-200 text-black rounded-lg mr-auto font-medium mb-3"
       >
         Add Products
       </NavLink>
-      <ProductTable products={data} />
+      <ProductTable products={data}/>
       <Outlet />
     </div>
   );

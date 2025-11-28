@@ -4,6 +4,7 @@ import FormGenerator from "../../components/FormElements/FormGenerator";
 import { useParams } from "react-router-dom";
 import { FaShoppingBag } from "react-icons/fa";
 import { useAddProductMutation, useGetProductByIdQuery, useUpdateProductMutation } from "../../features/product/productApi";
+import { toast } from "react-toastify";
 
 const ProductForm = () => {
   const { id } = useParams();
@@ -14,8 +15,10 @@ const ProductForm = () => {
   const handleSubmit = (product) => {
     if (id) {
     updateProduct({ id, ...product });
+    toast.success("Product updated successfully!");
     } else {
    addProduct(product);
+   toast.success("Product added successfully!");
     }
   };
 
@@ -52,7 +55,7 @@ const ProductForm = () => {
       required: true,
       options: ["Nike", "Adidas", "Samsung", "Apple", "Sony"],
     },
-    { name: "product_image", type: "image", required: true },
+    { name: "product_image", type: "image"},
   ];
 
   return (

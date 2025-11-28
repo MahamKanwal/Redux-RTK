@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import DynamicTable from "../../components/DynamicTable";
 import { useDeleteUserMutation } from "../../features/user/userApi";
 
@@ -13,6 +14,7 @@ const UserTable = ({ users }) => {
 
   const handleDelete = (id) => {
   deleteUser(id);
+        toast.success("User deleted successfully!");
   };
 
   return (

@@ -19,7 +19,7 @@ const Users = () => {
     <div className="mt-4">
       <NavLink
         to="/users/create"
-        className="px-4 py-2 bg-gray-100 text-black rounded-lg mr-auto font-medium"
+        className="px-4 py-2 bg-gray-200 text-black rounded-lg mr-auto font-medium"
       >
         Add Users
       </NavLink>

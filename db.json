@@ -1,70 +1,30 @@
 {
   "users": [
     {
-      "id": "19e2",
-      "name": "Tobias Marshall",
-      "contact_number": 34233421344,
-      "email": "rowuruqafu@mailinator.com",
+      "name": "Octavius Baker",
+      "contact_number": 830888999999,
+      "email": "zynagegek@mailinator.com",
       "city": "karachi",
-      "user_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763914715/50f7f46ac6686d1336da9fdbd6be45c9.jpg"
+      "user_image": "",
+      "id": "d4ae"
     },
     {
-      "id": "67d8",
-      "name": "Paki Weeks",
-      "contact_number": 4289340399,
-      "email": "pycy@mailinator.com",
-      "city": "lahore",
-      "user_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763914715/50f7f46ac6686d1336da9fdbd6be45c9.jpg"
-    },
-    {
-      "id": "c7f5",
-      "name": "Chadwick Singleton",
-      "contact_number": 5568889999,
-      "email": "cequheho@mailinator.com",
-      "city": "karachi",
-      "user_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763914715/50f7f46ac6686d1336da9fdbd6be45c9.jpg"
-    },
-    {
-      "id": "5155",
-      "name": "Damon Pickett",
-      "contact_number": 70099999999,
-      "email": "ponopuxovi@mailinator.com",
-      "city": "karachi",
-      "user_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763918261/9e1a38236923ce0fccebfff7e300f6ca.jpg"
+      "id": "89e9",
+      "name": "Aimee Maddox",
+      "contact_number": 458889992333,
+      "email": "kexefys@mailinator.com",
+      "city": "quetta",
+      "user_image": ""
     }
   ],
   "products": [
     {
-      "product_name": "samsung s25 ultra",
-      "price": 40000,
-      "category": "Electronics",
-      "brand": "Sony",
-      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763918311/b0867f76bc29b0384e00f184e581c8ae.jpg",
-      "id": "f7c5"
-    },
-    {
-      "product_name": "Nishad",
-      "price": 30000,
-      "category": "Clothing",
-      "brand": "Apple",
-      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763914715/50f7f46ac6686d1336da9fdbd6be45c9.jpg",
-      "id": "969c"
-    },
-    {
-      "product_name": "laptop",
-      "price": 50000,
+      "product_name": "Keefe Sargent",
+      "price": 55,
       "category": "Electronics",
       "brand": "Adidas",
-      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763918261/9e1a38236923ce0fccebfff7e300f6ca.jpg",
-      "id": "251d"
-    },
-    {
-      "product_name": "Thane Estrada",
-      "price": 9999,
-      "category": "Electronics",
-      "brand": "Apple",
-      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763918261/9e1a38236923ce0fccebfff7e300f6ca.jpg",
-      "id": "eab9"
+      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763914715/50f7f46ac6686d1336da9fdbd6be45c9.jpg",
+      "id": "a144"
     }
   ]
 }

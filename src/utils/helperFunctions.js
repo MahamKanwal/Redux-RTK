@@ -31,9 +31,17 @@ export const uploadToCloudinary = async (file) => {
   return data.secure_url; // image URL
 };
 
-
-export const apiRequest = (url, method = "GET", body = undefined) => ({
+export const apiRequest = (url = "", method = "GET", body = undefined) => ({
   url,
   method,
   body,
 });
+
+// export const createTagOfData = (data,type) => data ?
+// [...data.map(({id})=>({type,id})),{type,id:"LIST"}]
+// :[{type,id:"LIST"}];
+
+export const createTagOfData = (result, type) =>
+  result
+    ? [...result.map(({ id }) => ({ type, id })), { type, id: "LIST" }]
+    : [{ type, id: "LIST" }];

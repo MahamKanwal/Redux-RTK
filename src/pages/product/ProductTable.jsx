@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import DynamicTable from "../../components/DynamicTable";
 import { useDeleteProductMutation } from "../../features/product/productApi";
 
@@ -6,6 +7,7 @@ const ProductTable = ({ products }) => {
 
   const handleDelete = (id) => {
     deleteProduct(id);
+    toast.success("Product deleted successfully!");
   };
 
   const productTableColumns = [
