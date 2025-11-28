@@ -1,30 +1,22 @@
 {
   "users": [
     {
-      "name": "Octavius Baker",
-      "contact_number": 830888999999,
-      "email": "zynagegek@mailinator.com",
+      "id": "69ad",
+      "name": "Preston Cobb",
+      "contact_number": 89677777777,
+      "email": "deli@mailinator.com",
       "city": "karachi",
-      "user_image": "",
-      "id": "d4ae"
-    },
-    {
-      "id": "89e9",
-      "name": "Aimee Maddox",
-      "contact_number": 458889992333,
-      "email": "kexefys@mailinator.com",
-      "city": "quetta",
       "user_image": ""
     }
   ],
   "products": [
     {
-      "product_name": "Keefe Sargent",
-      "price": 55,
-      "category": "Electronics",
-      "brand": "Adidas",
-      "product_image": "https://res.cloudinary.com/dvaczuwrm/image/upload/v1763914715/50f7f46ac6686d1336da9fdbd6be45c9.jpg",
-      "id": "a144"
+      "id": "8c18",
+      "product_name": "Hilel Gross",
+      "price": 72,
+      "category": "Books and Stationery",
+      "brand": "Nike",
+      "product_image": ""
     }
   ]
 }

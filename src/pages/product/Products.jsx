@@ -4,6 +4,7 @@ import Loader from "../../components/Loader";
 import Error from "../../components/Error";
 import { useGetProductsQuery } from "../../features/product/productApi";
 
+
 const Products = () => {
   const { data, isLoading, isError, error, refetch } = useGetProductsQuery();
 
