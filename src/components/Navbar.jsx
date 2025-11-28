@@ -1,7 +1,7 @@
 import { FaMoon, FaSun } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import { useStore } from "../hooks/useStore";
-import {themeActions} from "../features/theme/themeSlice";
+import {toggleTheme} from "../features/theme/themeSlice";
 
 
 const Navbar = () => {
@@ -32,7 +32,7 @@ const Navbar = () => {
         </li>
       </ul>
       <button
-        onClick={() => dispatch(themeActions.toggleTheme())}
+        onClick={() => dispatch(toggleTheme())}
         className="p-2 rounded-full bg-white/20 hover:bg-white/30 dark:bg-black/20 dark:hover:bg-black/30 transition-colors duration-200"
         aria-label="Toggle theme"
       >

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { userActions } from "../../features/user/userSlice";
+import { addToCart } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
 import { formatPrice } from "../../utils/helperFunctions";
 
@@ -61,7 +61,7 @@ const ProductCard = ({ product }) => {
         <button
           className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
           onClick={() => {
-            dispatch(userActions.addToCart(product));
+            dispatch(addToCart(product));
             toast.success(`${product.product_name} added to cart`);
           }}
         >

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { userActions } from "../../features/user/userSlice";
+import { decreaseQty, increaseQty, removeFromCart } from "../../features/user/userSlice";
 import { formatPrice } from "../../utils/helperFunctions";
 import { FaTrash } from "react-icons/fa";
 
@@ -28,7 +28,7 @@ const CartCard = ({ item }) => {
         <div className="flex items-center justify-center gap-2">
           <button
             className="px-2 py-1 border rounded"
-            onClick={() => dispatch(userActions.decreaseQty(item.id))}
+            onClick={() => dispatch(decreaseQty(item.id))}
           >
             −
           </button>
@@ -37,7 +37,7 @@ const CartCard = ({ item }) => {
           </span>
           <button
             className="px-2 py-1 border rounded"
-            onClick={() => dispatch(userActions.increaseQty(item.id))}
+            onClick={() => dispatch(increaseQty(item.id))}
           >
             +
           </button>
@@ -51,7 +51,7 @@ const CartCard = ({ item }) => {
       </td>
       <td
         className="text-center px-4 py-3"
-        onClick={() => dispatch(userActions.removeFromCart(item.id))}
+        onClick={() => dispatch(removeFromCart(item.id))}
       >
         <FaTrash className="text-blue-500" />
       </td>

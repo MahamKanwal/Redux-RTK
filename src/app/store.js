@@ -3,8 +3,8 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import api from "../features/baseApi";
 
 // Slices
-import { userReducer } from "../features/user/userSlice";
-import { themeReducer } from "../features/theme/themeSlice";
+import userReducer from "../features/user/userSlice";
+import  themeReducer  from "../features/theme/themeSlice";
 
 // Root Reducer
 const rootReducer = combineReducers({

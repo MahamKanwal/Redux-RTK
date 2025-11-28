@@ -14,7 +14,7 @@
 //   crud = false,
 //   reducers = {},
 // }) => {
- 
+
 //   let fetchItems, addItem, deleteItem, updateItem;
 
 //   if (crud) {
@@ -42,7 +42,6 @@
 //     );
 //   }
 
- 
 //   const crudState = crud
 //     ? {
 //         items: [],
@@ -50,7 +49,6 @@
 //         error: null,
 //       }
 //     : {};
-
 
 //   const slice = createSlice({
 //     name,
@@ -113,22 +111,87 @@
 //   };
 // };
 
+// userSlice.js
+// import { createCrudSlice } from "../createCrudSlice";
+// import { apiUrl } from "../../Api";
 
-import { createSlice } from "@reduxjs/toolkit";
+// const sliceArgs = {
+//   name: "users",
+//   url: `${apiUrl}/users`,
+//   crud: true,
+//   initialState: {
+//     cartItems: JSON.parse(localStorage.getItem("cartItems")) || [],
+//   },
+//   reducers: {
+//     addToCart: (state, action) => {
+//       const product = action.payload;
+//       const existing = state.cartItems.find((item) => item.id === product.id);
 
-export const createCrudSlice = ({name = "",initialState = {},reducers = {},}) => {
-  
-  const slice = createSlice({
-    name,
-    initialState: {
-      ...initialState,
-    },
-    reducers,
-  });
+//       if (existing) {
+//         existing.quantity += 1;
+//       } else {
+//         state.cartItems.push({ ...product, quantity: 1 });
+//       }
+//       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+//     },
 
-  return {
-    reducer: slice.reducer,
-    actions: slice.actions,
-  };
-};
+//     removeFromCart: (state, action) => {
+//       const id = action.payload;
+//       const item = state.cartItems.find((i) => i.id === id);
 
+//       if (!item) return;
+
+//       state.cartItems = state.cartItems.filter((i) => i.id !== id);
+
+//       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+//     },
+
+//     increaseQty: (state, action) => {
+//       const id = action.payload;
+//       const item = state.cartItems.find((i) => i.id === id);
+
+//       if (item) {
+//         item.quantity += 1;
+//       }
+
+//       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+//     },
+
+//     decreaseQty: (state, action) => {
+//       const id = action.payload;
+//       const item = state.cartItems.find((i) => i.id === id);
+
+//       if (item.quantity > 1) {
+//         item.quantity -= 1;
+//       } else {
+//         state.cartItems = state.cartItems.filter((i) => i.id !== id);
+//       }
+
+//       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+//     },
+
+//     clearCart: (state) => {
+//       state.cartItems = [];
+
+//       localStorage.setItem("cartItems", JSON.stringify([]));
+//     },
+//   },
+// };
+// export const { reducer: userReducer, actions: userActions } =
+//   createCrudSlice(sliceArgs);
+
+// themeSlice.js
+// import { createCrudSlice } from "../createCrudSlice";
+// const sliceArgs = {
+//   name: "darMode",
+//   initialState: localStorage.getItem("darkMode") == "true",
+//   reducers: {
+//     toggleTheme: (state) => {
+//       const newMode = !state;
+//       localStorage.setItem("darkMode", newMode);
+//       document.documentElement.classList[newMode ? "add" : "remove"]("dark");
+//       return newMode;
+//     },
+//   },
+// };
+// export const { reducer: themeReducer, actions: themeActions } = createCrudSlice(sliceArgs);
