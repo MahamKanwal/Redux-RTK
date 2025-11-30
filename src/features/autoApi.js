@@ -5,8 +5,7 @@ const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
   const autoApi = (name, tagName) => {
   const resourceName = capitalize(name); 
  const singularName = capitalize(name.slice(0, -1));
-console.log(singularName);
-console.log(resourceName);
+
   return api.injectEndpoints({
     endpoints: (builder) => ({
       // ---------------- GET ALL ----------------
